@@ -1,4 +1,5 @@
 const { mysqlConnection } = require('./conn.js');
+const { execQuery } = require('./utils/function.js');
 
 const getPessoas = (req,res) => {
 		let filter = '';
@@ -6,12 +7,7 @@ const getPessoas = (req,res) => {
 		const query = 'SELECT * FROM DS_PESSOA';
 		const queryWhere = query + filter;
 
-		mysqlConnection.query(req.params.id ? queryWhere : query, (err, rows, fields) => {
-			if (!err)
-				res.send(rows);
-			else
-				console.log(err);
-	})
+		execQuery(req,res,mysqlConnection,query);
 }
 
 const insertPessoas = (req,res) => {
@@ -20,24 +16,16 @@ const insertPessoas = (req,res) => {
 		const id =  null;
 		const query = `insert into DS_PESSOA values(${nome},${idade},${id})`;
 
-		mysqlConnection.query(query, (err, rows, fields) => {
-			if (!err)
-				res.send(rows);
-			else
-				console.log(err);
-	})
+		execQuery(req,res,mysqlConnection,query);
+
 }
 
 const deletePessoas = (req,res) => {
 		const id = req.params.id;
 		const query =  `delete from DS_PESSOA where ds_pessoa_id = ${id}`;
 
-		mysqlConnection.query(query, (err, rows, fields) => {
-			if (!err)
-				res.send(rows);
-			else
-				console.log(err);
-	})
+		execQuery(req,res,mysqlConnection,query);
+
 }
 
 const updatePessoas = (req,res) => {
@@ -51,12 +39,8 @@ const updatePessoas = (req,res) => {
 			where ds_pessoa_id = ${id}
 		`;
 
-		mysqlConnection.query(query, (err, rows, fields) => {
-			if (!err)
-				res.send(rows);
-			else
-				console.log(err);
-	})
+		execQuery(req,res,mysqlConnection,query);
+
 }
 
 module.exports = {
