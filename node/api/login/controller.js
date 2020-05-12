@@ -6,7 +6,7 @@ const loginUser    = (req,res) => {
     const password =   req.params.password
     const cpf      =   req.params.cpf
 
-    mysqlConnection.query('SELECT * FROM LOGIN WHERE ds_user = ?',[user],(error,results,fields)=>{
+    mysqlConnection.query('SELECT * FROM LOGIN WHERE ds_user = ? and ds_password = ? and cpf = ?',[user,password,cpf],(error,results,fields)=>{
     res.send(results);
     })
 }

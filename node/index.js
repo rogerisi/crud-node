@@ -16,7 +16,7 @@ app.delete('/deletePessoas/:id?',deletePessoas);
 app.put('/updatePessoas/:id?',updatePessoas);
 
 app.post('/create-login',createUserlogin);
-app.get('/login-user/:user?',loginUser);
+app.get('/login-user/:user?/:password?/:cpf?',loginUser);
 
 const port = process.env.PORT || 8080;
 app.listen(port, () => console.log(`Listening on port ${port}..`));
