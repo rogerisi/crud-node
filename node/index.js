@@ -2,7 +2,7 @@ var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 const mysql = require('mysql');
-const { getPessoas, insertPessoas, deletePessoas, updatePessoas } = require('./controller.js');
+const { getPessoas, insertPessoas, deletePessoas, updatePessoas } = require('./api/controller.js');
 
 app.set('view engine','ejs');
 

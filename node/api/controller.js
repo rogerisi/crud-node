@@ -1,5 +1,5 @@
-const { mysqlConnection } = require('./conn.js');
-const { execQuery } = require('./utils/function.js');
+const { mysqlConnection } = require('../database/conn.js');
+const { responseJSON } = require('../utils/functions.js');
 
 const getPessoas = (req,res) => {
 		let filter = '';
@@ -7,7 +7,7 @@ const getPessoas = (req,res) => {
 		const query = 'SELECT * FROM DS_PESSOA';
 		const queryWhere = query + filter;
 
-		execQuery(req,res,mysqlConnection,query);
+		responseJSON(req,res,mysqlConnection,query)
 }
 
 const insertPessoas = (req,res) => {
@@ -16,16 +16,14 @@ const insertPessoas = (req,res) => {
 		const id =  null;
 		const query = `insert into DS_PESSOA values(${nome},${idade},${id})`;
 
-		execQuery(req,res,mysqlConnection,query);
-
+		responseJSON(req,res,mysqlConnection,query);
 }
 
 const deletePessoas = (req,res) => {
 		const id = req.params.id;
 		const query =  `delete from DS_PESSOA where ds_pessoa_id = ${id}`;
 
-		execQuery(req,res,mysqlConnection,query);
-
+		responseJSON(req,res,mysqlConnection,query);
 }
 
 const updatePessoas = (req,res) => {
@@ -40,7 +38,6 @@ const updatePessoas = (req,res) => {
 		`;
 
 		execQuery(req,res,mysqlConnection,query);
-
 }
 
 module.exports = {
