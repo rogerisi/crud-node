@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { getPeople, deletePeople, updatePeople, createPeople } = require('../api/pessoa/service');
+const { getPeople, deletePeople, updatePeople, createPeople } = require('../service/people/service');
 
 router.route('/')
 	.get(getPeople)
