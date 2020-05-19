@@ -1,4 +1,4 @@
-function responseJSON(req,res,mysqlConnection,querySQL){
+const responseJSON = (req,res,mysqlConnection,querySQL)=>{
 	mysqlConnection.query(querySQL,(err,rows,fields) => {
 		if (!err)
 			res.send({
@@ -7,7 +7,7 @@ function responseJSON(req,res,mysqlConnection,querySQL){
 				"body":rows
      	 });
 		else
-		console.log(err);
+		console.error(err);
 	})
 }
 
