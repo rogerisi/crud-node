@@ -1,5 +1,5 @@
-const response = (req,res,mysqlConnection,querySQL)=>{
-	mysqlConnection.query(querySQL,(err,rows,fields) => {
+const response = (req,res,mysqlConnection,query)=>{
+	mysqlConnection.query(query,(err,rows) => {
 		if (!err)
 			res.send({
 				"code":200,
