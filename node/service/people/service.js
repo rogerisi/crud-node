@@ -1,7 +1,7 @@
 const { mysqlConnection } = require('../../database/conn.js');
 const { response } = require('../../utils/response.js');
 
-const getPeople    = (req,res) => {
+const getPeople = (req,res) => {
 	response(req,res,mysqlConnection,
 		`SELECT * FROM DS_PESSOA`)
 }
